@@ -56,7 +56,7 @@ header {
     border-bottom: none;
 }
 
-/*criando o X*/
+/*criando o X, so que vai criar duas barras laterais*/
 .celulas.x::before,
 .celulas.x::after {
     content: "";
@@ -72,5 +72,26 @@ header {
 }
 
 .celulas.x::after {
+    transform: rotate(-45deg);
+}
+
+/*criando o 0, so que dessa vez tem que criar um circulo dentro de um circulo*/
+.celulas.o::before,
+.celulas.o::after {
+    content: "";
+    width: var(--tamanhoX);
+    height: var(--tamanhoX);
+
+    border-radius: 50%;
+
+    background-color: white;
+    position: absolute;
+}
+
+.celulas.o::before {
+    transform: rotate(45deg);
+}
+
+.celulas.o::after {
     transform: rotate(-45deg);
 }
