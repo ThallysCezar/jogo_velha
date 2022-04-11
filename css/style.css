@@ -9,6 +9,7 @@
 :root {
     --backGround: #202124;
     --tamanhoDaCelula: 100px;
+    --tamanhoX: calc(var(--tamanhoDaCelula) * 0.9);
 }
 
 body {
@@ -33,6 +34,13 @@ header {
 .celulas {
     width: var(--tamanhoDaCelula);
     height: var(--tamanhoDaCelula);
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
     border: 1px white solid;
     border-top: none;
     border-right: none;
@@ -46,4 +54,23 @@ header {
 /*serve para apagar as listas laterais embaixo, com esse novo metodo de css, n+7(pegará de 7 em diante) e assim sucessivamente*/
 .celulas:nth-child(n + 7) {
     border-bottom: none;
+}
+
+/*criando o X*/
+.celulas.x::before,
+.celulas.x::after {
+    content: "";
+    width: calc(var(--tamanhoX) * 0.15);
+    height: var(--tamanhoX);
+
+    background-color: white;
+    position: absolute;
+}
+
+.celulas.x::before {
+    transform: rotate(45deg);
+}
+
+.celulas.x::after {
+    transform: rotate(45deg);
 }
