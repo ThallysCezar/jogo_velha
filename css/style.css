@@ -16,6 +16,11 @@ body {
     background: var(--backGround);
 }
 
+main.end {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}
+
 header {
     text-align: center;
     color: white;
@@ -123,4 +128,41 @@ header {
 .celulas.x,
 .celulas.o {
     cursor: not-allowed;
+}
+
+.game-end-message {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: rgba(255, 255, 255, 0.9);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font: 400 24pt "Open Sans", sans-serif;
+}
+
+.game-end-message button {
+    font-size: 14pt;
+    background-color: var(--backGround);
+    border: 1px solid white;
+    color: white;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.game-end-message button:hover {
+    filter: brightness(130%);
+}¨
+
+.game-end-message.show {
+    display: flex;
 }
