@@ -61,6 +61,19 @@ header {
 /*criando o Hover de passar por uma celula e aparecer o X ou o 0*/
 /*criando o X, so que vai criar duas barras laterais*/
 /*not(.x), é que quando tiver um X ou 0, ele nao vai fazer um hover*/
+/*fazendo com que no hover, haja uma certa opacidade, usando, de uma certa forma, o background*/
+.celulas.x::before,
+.celulas.x::after,
+.celulas.o::before {
+    background-color: white;
+}
+
+.borda.x .celulas:not(.x):not(.o):hover:before,
+.borda.x .celulas:not(.x):not(.o):hover::after,
+.borda.o .celulas:not(.x):not(.o):hover:before {
+    background-color: #3d3d3d;
+}
+
 .borda.x .celulas:not(.x):not(.o):hover:before,
 .borda.x .celulas:not(.x):not(.o):hover::after,
 .celulas.x::before,
@@ -68,8 +81,6 @@ header {
     content: "";
     width: calc(var(--tamanhoX) * 0.15);
     height: var(--tamanhoX);
-
-    background-color: white;
     position: absolute;
 }
 
@@ -84,6 +95,8 @@ header {
 }
 
 /*criando o 0, so que dessa vez tem que criar um circulo dentro de um circulo*/
+.borda.o .celulas:not(.x):not(.o):hover:before,
+.borda.o .celulas:not(.x):not(.o):hover::after,
 .celulas.o::before,
 .celulas.o::after {
     content: "";
@@ -94,13 +107,13 @@ header {
     position: absolute;
 }
 
+.borda.o .celulas:not(.x):not(.o):hover:before,
 .celulas.o::before {
     width: calc(var(--tamanhoX) * 0.9);
     height: calc(var(--tamanhoX) * 0.9);
-
-    background-color: white;
 }
 
+.borda.o .celulas:not(.x):not(.o):hover::after,
 .celulas.o::after {
     width: calc(var(--tamanhoX) * 0.65);
     height: calc(var(--tamanhoX) * 0.65);
