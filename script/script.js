@@ -51,6 +51,13 @@ function handleClick(e) {
     let classeTurno = xTurn ? xClass : oClass;
 
     placeMark(celula, classeTurno)
+
+    if(verifSeVenceu(classeTurno) == true){
+        endGame(false);
+    } else if (verifSeEmpate()) {
+        endGame(true);
+    }
+
     trocarTurnos();
     trocandoHover();
 }
@@ -79,4 +86,12 @@ function verifSeEmpate() {
     return celulas.every(celula => {
         return celula.classList.contains(xClass)  || celula.classList.contains(oClass) 
     })
+}
+
+function endGame(empate) {
+    if(empate) {
+        gamEndMessage.innerText = "Empate!!!!";
+    } else {
+        gamEndMessage.innerText = `${xTurn ? "X's" : "O's"} venceu!!`;
+    }
 }
