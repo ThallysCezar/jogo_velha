@@ -16,4 +16,27 @@ startGame()
 function startGame() {
     xTurn = true;
     borda.classList.add('x');
+
+    celulas.forEach(celula => {
+        celula.classList.remove(xClass);
+        celula.classList.remove(oClass);
+        borda.classList.replace('o', 'x');
+
+
+        celula.addEventListener('click', handleClick, {once: true})
+    })
+
+    restartButton.addEventListener('click', startGame);
+    document.querySelector('main').classList.remove('end');
+}
+
+function handleClick(e) {
+    let celula = e.target;
+    let turnClass = xTurn ? xClass : oClass;
+
+    placeMark(celula, turnClass)
+}
+
+function placeMark(celula, turnClass) {
+    celula.classList.add(turnClass);
 }
