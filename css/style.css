@@ -28,7 +28,8 @@ header {
     justify-content: center;
     align-items: center;
 
-    grid-template-columns: repeat(3, auto); /*isso aqui serve para deixar tudo alinhado com colunas, com 3 colunas e uso automatico.*/
+    grid-template-columns: repeat(3, auto);
+    /*isso aqui serve para deixar tudo alinhado com colunas, com 3 colunas e uso automatico.*/
 }
 
 .celulas {
@@ -44,6 +45,7 @@ header {
     border: 1px white solid;
     border-top: none;
     border-right: none;
+    cursor: pointer;
 }
 
 /*serve para apagar as listas laterais esquerdas, com esse novo metodo de css, 3*0+1=1(irá pegar a primeira celula) e assim sucessivamente*/
@@ -56,7 +58,11 @@ header {
     border-bottom: none;
 }
 
+/*criando o Hover de passar por uma celula e aparecer o X ou o 0*/
 /*criando o X, so que vai criar duas barras laterais*/
+/*not(.x), é que quando tiver um X ou 0, ele nao vai fazer um hover*/
+.borda.x .celulas:not(.x):not(.o):hover:before,
+.borda.x .celulas:not(.x):not(.o):hover::after,
 .celulas.x::before,
 .celulas.x::after {
     content: "";
@@ -67,10 +73,12 @@ header {
     position: absolute;
 }
 
+.borda.x .celulas:not(.x):not(.o):hover::before,
 .celulas.x::before {
     transform: rotate(45deg);
 }
 
+.borda.x .celulas:not(.x):not(.o):hover::after,
 .celulas.x::after {
     transform: rotate(-45deg);
 }
@@ -97,4 +105,9 @@ header {
     width: calc(var(--tamanhoX) * 0.65);
     height: calc(var(--tamanhoX) * 0.65);
     background-color: var(--backGround);
+}
+
+.celulas.x,
+.celulas.o {
+    cursor: not-allowed;
 }
