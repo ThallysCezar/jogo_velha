@@ -7,4 +7,11 @@ const borda = document.querySelectorAll('#borda');
 
 const gamEndMessage = document.querySelectorAll('[data-game-end-message]');
 
-const gamEndElement = document.querySelectorAll('#gameEndMessage');
+const gamEndElement = document.querySelectorAll('#gameEndElement');
+
+const restartButton = document.querySelectorAll('#restartButton');
+
+function startGame() {
+    xTurn = true;
+    borda.classList.add('x');
+}
