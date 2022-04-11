@@ -7,7 +7,8 @@
 }
 
 :root {
-    --backGround: #202124
+    --backGround: #202124;
+    --tamanhoDaCelula: 100px;
 }
 
 body {
@@ -18,5 +19,31 @@ header {
     text-align: center;
     color: white;
     font: 400px 12pt "Open Sans", sans-serif;
-    margin: 64px 16px 64px 16px;
+    margin: 64px 0 64px 0;
+}
+
+.borda {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    grid-template-columns: repeat(3, auto); /*isso aqui serve para deixar tudo alinhado com colunas, com 3 colunas e uso automatico.*/
+}
+
+.celulas {
+    width: var(--tamanhoDaCelula);
+    height: var(--tamanhoDaCelula);
+    border: 1px white solid;
+    border-top: none;
+    border-right: none;
+}
+
+/*serve para apagar as listas laterais esquerdas, com esse novo metodo de css, 3*0+1=1(irá pegar a primeira celula) e assim sucessivamente*/
+.celulas:nth-child(3n + 1) {
+    border-left: none;
+}
+
+/*serve para apagar as listas laterais embaixo, com esse novo metodo de css, n+7(pegará de 7 em diante) e assim sucessivamente*/
+.celulas:nth-child(n + 7) {
+    border-bottom: none;
 }
