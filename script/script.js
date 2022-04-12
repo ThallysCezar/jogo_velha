@@ -1,3 +1,5 @@
+//não ta aparecendo o 'show', quando o cara ganha a partida, consertar
+
 const xClass = 'x';
 const oClass = 'o';
 let xTurn;
