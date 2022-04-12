@@ -5,11 +5,11 @@ let xTurn;
 const celulas = document.querySelectorAll('.celulas');
 const borda = document.getElementById('borda');
 
-const gamEndMessage = document.querySelectorAll('[data-game-end-message]');
+const gameEndMessage = document.querySelectorAll('[data-game-end-message]');
 
-const gamEndElement = document.querySelectorAll('#gameEndElement');
+const gameEndElement = document.getElementById('gameEndElement');
 
-const restartButton = document.querySelectorAll('#restartButton');
+const restartButton = document.getElementById('restartButton');
 
 
 //lista de possíveis vitórias
@@ -43,6 +43,7 @@ function startGame() {
     })
 
     restartButton.addEventListener('click', startGame);
+    gameEndElement.classList.remove('show');
     document.querySelector('main').classList.remove('end');
 }
 
@@ -52,7 +53,7 @@ function handleClick(e) {
 
     placeMark(celula, classeTurno)
 
-    if(verifSeVenceu(classeTurno) == true){
+    if(verifSeVenceu(classeTurno)){
         endGame(false);
     } else if (verifSeEmpate()) {
         endGame(true);
@@ -83,15 +84,18 @@ function verifSeVenceu(classeTurno) {
 }
 
 function verifSeEmpate() {
-    return celulas.every(celula => {
+    return [...celulas].every(celula => {
         return celula.classList.contains(xClass)  || celula.classList.contains(oClass) 
     })
 }
 
 function endGame(empate) {
     if(empate) {
-        gamEndMessage.innerText = "Empate!!!!";
+        gameEndMessage.innerText = "Empate!!!!";
     } else {
-        gamEndMessage.innerText = `${xTurn ? "X's" : "O's"} venceu!!`;
+        gameEndMessage.innerText = `${xTurn ? "X's" : "O's"} venceu!!`;
     }
+
+    gameEndElement.classList.add('show');
+    document.querySelector('main').classList.add('end');
 }
