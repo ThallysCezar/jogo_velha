@@ -1,4 +1,5 @@
 //não ta aparecendo o 'show', quando o cara ganha a partida, consertar
+//consertar o negocio do botao, que nao ta servindo para exatamente nada, reconfigurar
 
 const xClass = 'x';
 const oClass = 'o';
